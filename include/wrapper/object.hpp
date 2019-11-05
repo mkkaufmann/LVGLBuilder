@@ -1,5 +1,4 @@
-#ifndef OBJECT_HPP
-#define OBJECT_HPP
+#pragma once
 #include "lvgl/lvgl.h"
 
 /**
@@ -137,4 +136,3 @@ protected:
 private:
   lv_obj_t* object;
 };
-#endif
