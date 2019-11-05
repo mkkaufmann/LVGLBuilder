@@ -1,4 +1,2 @@
-.ccls-cache
-Dockerfile
-*.o
-pc_simulator.launch
+*.sublime*
+bin/
