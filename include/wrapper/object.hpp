@@ -27,9 +27,6 @@ public:
   /* Delete this Object and all of its children */
   void remove();
 
-  /* Delete this Object and all of its children */
-  void removeAsync();
-
   /* Delete all of this Object's children */
   Object& clean();
 
@@ -41,12 +38,6 @@ public:
    * @param parent the parent for this object to become a child of
    */
   Object& setParent(Object* parent);
-
-  /* Move object to the foreground */
-  Object& moveToForeground();
-
-  /* Move object to the background */
-  Object& moveToBackground();
 
   /* Set the position of the object
    *
@@ -121,18 +112,13 @@ public:
    */
   Object& setAutoRealign(bool enabled);
 
-  /* Set the size of an extended clickable area
+  /**
+   * Gets the internal lvgl object pointer.
    *
-   * @param left   the size of the extended clickable area on the left
-   * @param right  the size of the extended clickable area on the right
-   * @param top    the size of the extended clickable area on the top
-   * @param bottom the size of the extended clickable area on the bottom
+   * @return The internal lvgl object pointer.
    */
-  Object& setExtendedClickArea(int left, int right, int top, int bottom);
-
-protected:
   lv_obj_t* getPointer();
 
-private:
+protected:
   lv_obj_t* object;
 };

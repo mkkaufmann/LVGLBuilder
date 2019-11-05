@@ -16,10 +16,6 @@ void Object::remove() {
   lv_obj_del(object);
 }
 
-void Object::removeAsync() {
-  lv_obj_del_async(object);
-}
-
 Object& Object::clean() {
   lv_obj_clean(object);
   return *this;
@@ -32,16 +28,6 @@ Object& Object::invalidate() {
 
 Object& Object::setParent(Object* parent) {
   lv_obj_set_parent(object, parent->getPointer());
-  return *this;
-}
-
-Object& Object::moveToForeground() {
-  lv_obj_move_foreground(object);
-  return *this;
-}
-
-Object& Object::moveToBackground() {
-  lv_obj_move_background(object);
   return *this;
 }
 
@@ -99,11 +85,6 @@ Object& Object::setAutoRealign(bool enabled) {
   lv_obj_set_auto_realign(object, enabled);
   return *this;
 };
-
-Object& Object::setExtendedClickArea(int left, int right, int top, int bottom) {
-  lv_obj_set_ext_click_area(object, left, right, top, bottom);
-  return *this;
-}
 
 lv_obj_t* Object::getPointer() {
   return object;
