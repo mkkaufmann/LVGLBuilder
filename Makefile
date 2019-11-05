@@ -46,9 +46,6 @@ VV = @
 INCLUDE=-iquote$(INCDIR)
 
 CXXSRC=$(call rwildcard, $(SRCDIR),*.cpp, $1)
-
-$(info ${CXXSRC})
-
 CXXOBJ=$(addprefix $(BINDIR)/,$(patsubst $(SRCDIR)/%,%.o,$(call CXXSRC,$1)))
 
 GETALLOBJ=$(sort $(call CXXOBJ,$1))

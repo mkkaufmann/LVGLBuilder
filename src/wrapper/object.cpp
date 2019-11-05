@@ -1,4 +1,4 @@
-#include "../include/object.hpp"
+#include "wrapper/object.hpp"
 
 Object::Object(){
 		object = lv_obj_create(lv_scr_act(), NULL);
