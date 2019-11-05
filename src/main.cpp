@@ -28,6 +28,7 @@
  **********************/
 static void hal_init(void);
 static int tick_thread(void* data);
+static int lvgl_thread(void* data);
 
 void ui_init();
 
@@ -45,6 +46,8 @@ int main(int argc, char** argv) {
   /*Initialize the HAL (display, input devices, tick) for LittlevGL*/
   hal_init();
 
+  lv_theme_set_current(lv_theme_alien_init(40, NULL));
+
   ui_init();
 
   return 0;
@@ -58,19 +61,14 @@ int main(int argc, char** argv) {
  * Initialize the Hardware Abstraction Layer (HAL) for the Littlev graphics library
  */
 static void hal_init(void) {
-  /* Use the 'monitor' driver which creates window on PC's monitor to simulate a display*/
+  /* Add a display
+   * Use the 'monitor' driver which creates window on PC's monitor to simulate a display*/
   monitor_init();
-
-  /*Create a display buffer*/
-  static lv_disp_buf_t disp_buf1;
-  static lv_color_t buf1_1[480 * 10];
-  lv_disp_buf_init(&disp_buf1, buf1_1, NULL, 480 * 10);
-
-  /*Create a display*/
   lv_disp_drv_t disp_drv;
   lv_disp_drv_init(&disp_drv); /*Basic initialization*/
-  disp_drv.buffer = &disp_buf1;
-  disp_drv.flush_cb = monitor_flush; /*Used when `LV_VDB_SIZE != 0` in lv_conf.h (buffered drawing)*/
+  disp_drv.disp_flush = monitor_flush;
+  disp_drv.disp_fill = monitor_fill;
+  disp_drv.disp_map = monitor_map;
   lv_disp_drv_register(&disp_drv);
 
   /* Add the mouse as input device
@@ -79,8 +77,8 @@ static void hal_init(void) {
   lv_indev_drv_t indev_drv;
   lv_indev_drv_init(&indev_drv); /*Basic initialization*/
   indev_drv.type = LV_INDEV_TYPE_POINTER;
-  indev_drv.read_cb = mouse_read;
-  lv_indev_t* mouse_indev = lv_indev_drv_register(&indev_drv);
+  indev_drv.read = mouse_read;
+  lv_indev_drv_register(&indev_drv);
 
   /* Tick init.
    * You have to call 'lv_tick_inc()' in periodically to inform LittelvGL about how much time were elapsed
