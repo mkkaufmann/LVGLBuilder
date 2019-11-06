@@ -15,6 +15,12 @@ public:
   explicit Object(lv_obj_t* iobject);
 
   /**
+   * Destroys the Object wrapper but the lvgl object is left untouched.
+   * Use remove() to delete the lvgl object
+   */
+  virtual ~Object() = default;
+
+  /**
    * Copying the wrapper makes no sense, to copy the object use copy()
    */
   Object(const Object& iobject) = delete;
@@ -25,8 +31,6 @@ public:
    */
   Object(Object&& iobject) = default;
   Object& operator=(Object&& iobject) = default;
-
-  virtual ~Object() = default;
 
   /**
    * Create object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
