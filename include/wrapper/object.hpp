@@ -1,5 +1,6 @@
 #pragma once
 #include "lvgl/lvgl.h"
+#include <utility>
 
 /**
  * Wrapper for LVGL Objects
@@ -47,63 +48,74 @@ public:
   void remove();
 
   /* Delete all of this Object's children */
-  Object& clean();
+  Object& clean() &;
+  Object&& clean() &&;
 
   /* Mark the object as invalid (see LVGL docs) */
-  Object& invalidate();
+  Object& invalidate() &;
+  Object&& invalidate() &&;
 
   /* Set the parent of this Object
    *
    * @param parent the parent for this object to become a child of
    */
-  Object& setParent(Object* parent);
+  Object& setParent(const Object& iparent) &;
+  Object&& setParent(const Object& iparent) &&;
 
   /* Set the position of the object
    *
    * @param x the new x position of the object
    * @param y the new y position of the object
    */
-  Object& setPosition(int x, int y);
+  Object& setPosition(int x, int y) &;
+  Object&& setPosition(int x, int y) &&;
 
   /* Set the x position of the object
    *
    * @param x the new x coordinate (measured from left side of the parent)
    */
-  Object& setX(int x);
+  Object& setX(int x) &;
+  Object&& setX(int x) &&;
 
   /* Set the y position of the object
    *
    * @param y the new y coordinate (measured from top of the parent)
    */
-  Object& setY(int y);
+  Object& setY(int y) &;
+  Object&& setY(int y) &&;
 
   /* Set the size of the object
    *
    * @param width  the new width of the object
    * @param height the new height of the object
    */
-  Object& setSize(int width, int height);
+  Object& setSize(int width, int height) &;
+  Object&& setSize(int width, int height) &&;
 
   /* Set the width of the object
    *
    * @param width the new width of the object
    */
-  Object& setWidth(int width);
+  Object& setWidth(int width) &;
+  Object&& setWidth(int width) &&;
 
   /* Set the height of the object
    *
    * @param height the new height of the object
    */
-  Object& setHeight(int height);
+  Object& setHeight(int height) &;
+  Object&& setHeight(int height) &&;
 
-  /* Align the object to another object
+  /**
+   * Align the object to another object
    *
    * @param base      the object to align to
    * @param alignment the type of alignment
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& align(Object* base, lv_align_t alignment, int xShift, int yShift);
+  Object& align(const Object& base, lv_align_t alignment, int xShift, int yShift) &;
+  Object&& align(const Object& base, lv_align_t alignment, int xShift, int yShift) &&;
 
   /* Align the object to its parent
    *
@@ -111,7 +123,8 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignToParent(lv_align_t alignment, int xShift, int yShift);
+  Object& alignToParent(lv_align_t alignment, int xShift, int yShift) &;
+  Object&& alignToParent(lv_align_t alignment, int xShift, int yShift) &&;
 
   /* Align the object to another object
    *
@@ -120,24 +133,27 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignOrigo(Object* base, lv_align_t alignment, int xShift, int yShift);
+  Object& alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) &;
+  Object&& alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) &&;
 
   /* Realign the object based on the last alignment */
-  Object& realign();
+  Object& realign() &;
+  Object&& realign() &&;
 
   /* Enable automatic realignment on resize
    *
    * @param enabled whether or not realignment is enabled
    */
-  Object& setAutoRealign(bool enabled);
+  Object& setAutoRealign(bool enabled) &;
+  Object&& setAutoRealign(bool enabled) &&;
 
   /**
    * Gets the internal lvgl object pointer.
    *
    * @return The internal lvgl object pointer.
    */
-  lv_obj_t* getPointer();
+  lv_obj_t* get() const;
 
 protected:
-  lv_obj_t* object;
+  lv_obj_t* object = NULL;
 };
