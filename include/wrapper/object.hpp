@@ -6,43 +6,42 @@
  */
 class Object {
 public:
+  /**
+   * Wraps an LVGL object pointer
+   *
+   * @param iobject The object
+   */
+  explicit Object(lv_obj_t* iobject);
+
+  /**
+   * Copying the wrapper makes no sense, to copy the object use copy()
+   */
+  Object(const Object& iobject) = delete;
+  Object& operator=(const Object& iobject) = delete;
+
+  /**
+   * Moving the wrapper is supported
+   */
+  Object(Object&& iobject) = default;
+  Object& operator=(Object&& iobject) = default;
+
   /*
-   * Construct object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
+   * Create object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
    */
-  Object();
+  static Object create();
 
-  /* Construct object with both parent and copy parameters
-   * Omitting the copy parameter defaults copy to NULL
+  /* Create object with parent parameter and defaults copy to NULL
    *
-   * @param parent the parent object for this object to be a child of
-   * @param copy   the object for this object to copy
+   * @param iparent the parent object for this object to be a child of
    */
-  explicit Object(const Object& parent, const Object* copy = NULL);
+  static Object create(const Object& iparent);
 
-  /* Construct object with parent parameter and defaults copy to NULL
+  /* Create object with both parent and copy parameters
    *
-   * @param parent the parent object for this object to be a child of
+   * @param iparent the parent object for this object to be a child of
+   * @param icopy   the object for this object to copy
    */
-  Object(Object* parent);
-
-  /* Construct object with both parent and copy parameters
-   *
-   * @param parent the parent object for this object to be a child of
-   * @param copy   the object for this object to copy
-   */
-  Object(Object* parent, Object* copy);
-
-  /**
-   * To copy the object use copy()
-   */
-  Object(const Object& object) = delete;
-  Object& operator=(const Object& object) = delete;
-
-  /**
-   * Moves a rvalue reference
-   */
-  Object(Object&& object) = default;
-  Object& operator=(Object&& object) = default;
+  static Object create(const Object& iparent, const Object& icopy);
 
   /* Delete this Object and all of its children */
   void remove();
