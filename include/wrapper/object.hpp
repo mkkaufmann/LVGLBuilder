@@ -7,11 +7,19 @@
 class Object {
 public:
   /*
-   * Construct object with no parameters. Defaults parent to lv_scr_act() Defaults copy to NULL
+   * Construct object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
    */
   Object();
 
-  /* Construct object with parent parameter Defaults copy to NULL
+  /* Construct object with both parent and copy parameters
+   * Omitting the copy parameter defaults copy to NULL
+   *
+   * @param parent the parent object for this object to be a child of
+   * @param copy   the object for this object to copy
+   */
+  explicit Object(const Object& parent, const Object* copy = NULL);
+
+  /* Construct object with parent parameter and defaults copy to NULL
    *
    * @param parent the parent object for this object to be a child of
    */
@@ -23,6 +31,18 @@ public:
    * @param copy   the object for this object to copy
    */
   Object(Object* parent, Object* copy);
+
+  /**
+   * To copy the object use copy()
+   */
+  Object(const Object& object) = delete;
+  Object& operator=(const Object& object) = delete;
+
+  /**
+   * Moves a rvalue reference
+   */
+  Object(Object&& object) = default;
+  Object& operator=(Object&& object) = default;
 
   /* Delete this Object and all of its children */
   void remove();
