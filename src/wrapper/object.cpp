@@ -24,7 +24,7 @@ Object& Object::clean() & {
 }
 
 Object&& Object::clean() && {
-  lv_obj_clean(object);
+  clean();
   return std::move(*this);
 }
 
@@ -34,7 +34,7 @@ Object& Object::invalidate() & {
 }
 
 Object&& Object::invalidate() && {
-  lv_obj_invalidate(object);
+  invalidate();
   return std::move(*this);
 }
 
@@ -44,7 +44,7 @@ Object& Object::setParent(const Object& iparent) & {
 }
 
 Object&& Object::setParent(const Object& iparent) && {
-  lv_obj_set_parent(object, iparent.get());
+  setParent(iparent);
   return std::move(*this);
 }
 
@@ -54,7 +54,7 @@ Object& Object::setPosition(int x, int y) & {
 }
 
 Object&& Object::setPosition(int x, int y) && {
-  lv_obj_set_pos(object, x, y);
+  setPosition(x, y);
   return std::move(*this);
 }
 
@@ -64,7 +64,7 @@ Object& Object::setX(int x) & {
 }
 
 Object&& Object::setX(int x) && {
-  lv_obj_set_x(object, x);
+  setX(x);
   return std::move(*this);
 }
 
@@ -74,7 +74,7 @@ Object& Object::setY(int y) & {
 }
 
 Object&& Object::setY(int y) && {
-  lv_obj_set_x(object, y);
+  setY(y);
   return std::move(*this);
 }
 
@@ -84,7 +84,7 @@ Object& Object::setSize(int width, int height) & {
 }
 
 Object&& Object::setSize(int width, int height) && {
-  lv_obj_set_size(object, width, height);
+  setSize(width, height);
   return std::move(*this);
 }
 
@@ -94,7 +94,7 @@ Object& Object::setWidth(int width) & {
 }
 
 Object&& Object::setWidth(int width) && {
-  lv_obj_set_width(object, width);
+  setWidth(width);
   return std::move(*this);
 }
 
@@ -104,7 +104,7 @@ Object& Object::setHeight(int height) & {
 }
 
 Object&& Object::setHeight(int height) && {
-  lv_obj_set_height(object, height);
+  setHeight(height);
   return std::move(*this);
 }
 
@@ -114,7 +114,7 @@ Object& Object::align(const Object& base, lv_align_t alignment, int xShift, int 
 }
 
 Object&& Object::align(const Object& base, lv_align_t alignment, int xShift, int yShift) && {
-  lv_obj_align(object, base.get(), alignment, xShift, yShift);
+  align(base, alignment, xShift, yShift);
   return std::move(*this);
 }
 
@@ -124,7 +124,7 @@ Object& Object::alignToParent(lv_align_t alignment, int xShift, int yShift) & {
 }
 
 Object&& Object::alignToParent(lv_align_t alignment, int xShift, int yShift) && {
-  lv_obj_align(object, lv_obj_get_parent(object), alignment, xShift, yShift);
+  alignToParent(alignment, xShift, yShift);
   return std::move(*this);
 }
 
@@ -134,7 +134,7 @@ Object& Object::alignOrigo(const Object& base, lv_align_t alignment, int xShift,
 }
 
 Object&& Object::alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) && {
-  lv_obj_align_origo(object, base.get(), alignment, xShift, yShift);
+  alignOrigo(base, alignment, xShift, yShift);
   return std::move(*this);
 }
 
@@ -144,7 +144,7 @@ Object& Object::realign() & {
 }
 
 Object&& Object::realign() && {
-  lv_obj_realign(object);
+  realign();
   return std::move(*this);
 }
 
@@ -154,7 +154,7 @@ Object& Object::setAutoRealign(bool enabled) & {
 };
 
 Object&& Object::setAutoRealign(bool enabled) && {
-  lv_obj_set_auto_realign(object, enabled);
+  setAutoRealign(enabled);
   return std::move(*this);
 };
 
