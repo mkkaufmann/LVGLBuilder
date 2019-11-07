@@ -45,84 +45,87 @@ Object&& Object::setParent(const Object& iparent) && {
   return std::move(setParent(iparent));
 }
 
-Object& Object::setPosition(int x, int y) & {
+Object& Object::setPosition(lv_coord_t x, lv_coord_t y) & {
   lv_obj_set_pos(object, x, y);
   return *this;
 }
 
-Object&& Object::setPosition(int x, int y) && {
+Object&& Object::setPosition(lv_coord_t x, lv_coord_t y) && {
   return std::move(setPosition(x, y));
 }
 
-Object& Object::setX(int x) & {
+Object& Object::setX(lv_coord_t x) & {
   lv_obj_set_x(object, x);
   return *this;
 }
 
-Object&& Object::setX(int x) && {
+Object&& Object::setX(lv_coord_t x) && {
   return std::move(setX(x));
 }
 
-Object& Object::setY(int y) & {
+Object& Object::setY(lv_coord_t y) & {
   lv_obj_set_x(object, y);
   return *this;
 }
 
-Object&& Object::setY(int y) && {
+Object&& Object::setY(lv_coord_t y) && {
   return std::move(setY(y));
 }
 
-Object& Object::setSize(int width, int height) & {
+Object& Object::setSize(lv_coord_t width, lv_coord_t height) & {
   lv_obj_set_size(object, width, height);
   return *this;
 }
 
-Object&& Object::setSize(int width, int height) && {
+Object&& Object::setSize(lv_coord_t width, lv_coord_t height) && {
   return std::move(setSize(width, height));
 }
 
-Object& Object::setWidth(int width) & {
+Object& Object::setWidth(lv_coord_t width) & {
   lv_obj_set_width(object, width);
   return *this;
 }
 
-Object&& Object::setWidth(int width) && {
+Object&& Object::setWidth(lv_coord_t width) && {
   return std::move(setWidth(width));
 }
 
-Object& Object::setHeight(int height) & {
+Object& Object::setHeight(lv_coord_t height) & {
   lv_obj_set_height(object, height);
   return *this;
 }
 
-Object&& Object::setHeight(int height) && {
+Object&& Object::setHeight(lv_coord_t height) && {
   return std::move(setHeight(height));
 }
 
-Object& Object::align(const Object& base, lv_align_t alignment, int xShift, int yShift) & {
+Object& Object::align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) & {
   lv_obj_align(object, base.get(), alignment, xShift, yShift);
   return *this;
 }
 
-Object&& Object::align(const Object& base, lv_align_t alignment, int xShift, int yShift) && {
+Object&&
+  Object::align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) && {
   return std::move(align(base, alignment, xShift, yShift));
 }
 
-Object& Object::alignToParent(lv_align_t alignment, int xShift, int yShift) & {
+Object& Object::alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) & {
   lv_obj_align(object, lv_obj_get_parent(object), alignment, xShift, yShift);
   return *this;
 }
 
-Object&& Object::alignToParent(lv_align_t alignment, int xShift, int yShift) && {
+Object&& Object::alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) && {
   return std::move(alignToParent(alignment, xShift, yShift));
 }
 
-Object& Object::alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) & {
+Object&
+  Object::alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) & {
   lv_obj_align_origo(object, base.get(), alignment, xShift, yShift);
   return *this;
 }
 
-Object&& Object::alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) && {
+Object&&
+  Object::alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) && {
   return std::move(alignOrigo(base, alignment, xShift, yShift));
 }
 

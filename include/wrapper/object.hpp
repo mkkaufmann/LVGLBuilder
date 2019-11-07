@@ -83,24 +83,24 @@ public:
    * @param x the new x position of the object
    * @param y the new y position of the object
    */
-  Object& setPosition(int x, int y) &;
-  Object&& setPosition(int x, int y) &&;
+  Object& setPosition(lv_coord_t x, lv_coord_t y) &;
+  Object&& setPosition(lv_coord_t x, lv_coord_t y) &&;
 
   /** 
    * Set the x position of the object
    *
    * @param x the new x coordinate (measured from left side of the parent)
    */
-  Object& setX(int x) &;
-  Object&& setX(int x) &&;
+  Object& setX(lv_coord_t x) &;
+  Object&& setX(lv_coord_t x) &&;
 
   /** 
    * Set the y position of the object
    *
    * @param y the new y coordinate (measured from top of the parent)
    */
-  Object& setY(int y) &;
-  Object&& setY(int y) &&;
+  Object& setY(lv_coord_t y) &;
+  Object&& setY(lv_coord_t y) &&;
 
   /** 
    * Set the size of the object
@@ -108,24 +108,24 @@ public:
    * @param width  the new width of the object
    * @param height the new height of the object
    */
-  Object& setSize(int width, int height) &;
-  Object&& setSize(int width, int height) &&;
+  Object& setSize(lv_coord_t width, lv_coord_t height) &;
+  Object&& setSize(lv_coord_t width, lv_coord_t height) &&;
 
   /** 
    * Set the width of the object
    *
    * @param width the new width of the object
    */
-  Object& setWidth(int width) &;
-  Object&& setWidth(int width) &&;
+  Object& setWidth(lv_coord_t width) &;
+  Object&& setWidth(lv_coord_t width) &&;
 
   /** 
    * Set the height of the object
    *
    * @param height the new height of the object
    */
-  Object& setHeight(int height) &;
-  Object&& setHeight(int height) &&;
+  Object& setHeight(lv_coord_t height) &;
+  Object&& setHeight(lv_coord_t height) &&;
 
   /**
    * Align the object to another object
@@ -135,8 +135,8 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& align(const Object& base, lv_align_t alignment, int xShift, int yShift) &;
-  Object&& align(const Object& base, lv_align_t alignment, int xShift, int yShift) &&;
+  Object& align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
+  Object&& align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
 
   /** 
    * Align the object to its parent
@@ -145,8 +145,8 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignToParent(lv_align_t alignment, int xShift, int yShift) &;
-  Object&& alignToParent(lv_align_t alignment, int xShift, int yShift) &&;
+  Object& alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
+  Object&& alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
 
   /** 
    * Align the object to another object
@@ -156,8 +156,8 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) &;
-  Object&& alignOrigo(const Object& base, lv_align_t alignment, int xShift, int yShift) &&;
+  Object& alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
+  Object&& alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
 
   /** 
    * Realign the object based on the last alignment
