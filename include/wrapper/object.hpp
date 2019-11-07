@@ -80,6 +80,14 @@ public:
   Object& invalidate() &;
   Object&& invalidate() &&;
 
+  /*=====================
+   * Setter functions
+   *====================*/
+
+  /*--------------------
+   * Parent/children set
+   *--------------------*/
+
   /** 
    * Set the parent of this Object
    *
@@ -87,6 +95,10 @@ public:
    */
   Object& setParent(const Object& iparent) &;
   Object&& setParent(const Object& iparent) &&;
+
+  /*--------------------
+   * Coordinate set
+   * ------------------*/
 
   /** 
    * Set the position of the object
