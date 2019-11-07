@@ -9,6 +9,13 @@ public:
   using Object::Object;
 
   /**
+   * Returns the name of the object, used for logging
+   */
+  static constexpr const char* getName() {
+    return "Line";
+  }
+
+  /**
    * Create Line with no parameters. Defaults parent to lv_scr_act() and copy to NULL
    */
   static Line create();

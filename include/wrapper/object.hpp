@@ -12,7 +12,7 @@ public:
   /**
    * Wraps an LVGL object pointer
    *
-   * @param iobject The object
+   * @param iobject The object pointer
    */
   explicit Object(lv_obj_t* iobject);
 
@@ -35,11 +35,11 @@ public:
   Object& operator=(Object&& iobject) = default;
 
   /**
-   * Gets the internal lvgl object pointer.
-   *
-   * @return The internal lvgl object pointer.
+   * Returns the name of the object, used for logging
    */
-  lv_obj_t* get() const;
+  static constexpr const char* getName() {
+    return "Object";
+  }
 
   /**
    * Implicitly converts to any object that is derived from Object
@@ -51,9 +51,14 @@ public:
       return std::move(dynamic_cast<T&>(*this));
     } catch (const std::bad_cast& e) {
       throw std::runtime_error(
-        "error: failed to implicitly convert 'Object' to '" + std::string(typeid(T).name()) + "'");
+        "error: failed to implicitly convert ‘Object’ to ‘" + std::string(T::getName()) + "’");
     }
   }
+
+  /**
+   * Returns the internal lvgl object pointer.
+   */
+  lv_obj_t* get() const;
 
   /*--------------------
    * Create and delete
