@@ -1,9 +1,8 @@
-[submodule "lvgl"]
-	path = lvgl
-	url = https://github.com/littlevgl/lvgl.git
-[submodule "lv_examples"]
-	path = lv_examples
-	url = https://github.com/littlevgl/lv_examples.git
-[submodule "lv_drivers"]
-	path = lv_drivers
+[submodule "test/include/lv_drivers"]
+	path = include/lv_drivers
 	url = https://github.com/littlevgl/lv_drivers.git
+	ignore = dirty
+[submodule "test/include/lvgl"]
+	path = include/lvgl
+	url = https://github.com/littlevgl/lvgl
+	ignore = dirty
