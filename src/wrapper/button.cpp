@@ -27,6 +27,11 @@ Button& Button::toggle() {
   return *this;
 }
 
+Button& Button::setAction(lv_btn_action_t type, lv_action_t action){
+		lv_btn_set_action(object, type, action);
+		return *this;
+}
+
 Button& Button::setLayout(lv_layout_t layout) {
   lv_btn_set_layout(object, layout);
   return *this;

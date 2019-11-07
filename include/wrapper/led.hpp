@@ -32,5 +32,4 @@ public:
    * @param icopy   the LED for this LED to copy
    */
   static LED create(const Object& iparent, const LED& icopy);
-
 };

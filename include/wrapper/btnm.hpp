@@ -32,5 +32,4 @@ public:
    * @param icopy   the ButtonMatrix for this ButtonMatrix to copy
    */
   static ButtonMatrix create(const Object& iparent, const ButtonMatrix& icopy);
-
 };

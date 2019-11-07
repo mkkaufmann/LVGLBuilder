@@ -32,5 +32,4 @@ public:
    * @param icopy   the Label for this Label to copy
    */
   static Label create(const Object& iparent, const Label& icopy);
-
 };

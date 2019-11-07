@@ -32,5 +32,4 @@ public:
    * @param icopy   the TileView for this TileView to copy
    */
   static TileView create(const Object& iparent, const TileView& icopy);
-
 };

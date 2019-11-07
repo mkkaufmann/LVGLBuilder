@@ -32,5 +32,4 @@ public:
    * @param icopy   the Line for this Line to copy
    */
   static Line create(const Object& iparent, const Line& icopy);
-
 };
