@@ -36,3 +36,30 @@ Button& Button::setLayout(lv_layout_t layout) {
   lv_btn_set_layout(object, layout);
   return *this;
 }
+
+Button& Button::setFit(bool horizontal_enable, bool vertical_enable){
+		lv_btn_set_fit(object, horizontal_enable, vertical_enable);
+		return *this;
+}
+
+Button& Button::setInkInTime(uint16_t time){
+		lv_btn_set_ink_in_time(object, time);
+		return *this;
+}
+
+Button& Button::setInkWaitTime(uint16_t time){
+		lv_btn_set_ink_wait_time(object, time);
+		return *this;
+}
+
+Button& Button::setInkOutTime(uint16_t time){
+		lv_btn_set_ink_out_time(object, time);
+		return *this;
+}
+
+Button& Button::setStyle(lv_btn_style_t type, lv_style_t* style){
+		lv_btn_set_style(object, type, style);		
+		return *this;
+}
+
+

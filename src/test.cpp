@@ -13,7 +13,10 @@ void ui_init() {
   obj2.setSize(20, 20).setPosition(0, 0);
 
   Button btn = Button::create().setSize(200, 100).setPosition(0, 0);
-
+  static lv_style_t style_1;
+  lv_style_copy(&style_1, &lv_style_plain);
+  style_1.body.main_color = LV_COLOR_RED;
+  btn.setStyle(LV_BTN_STYLE_PR, &style_1);
   while (true) {
     usleep(1000000);
   }
