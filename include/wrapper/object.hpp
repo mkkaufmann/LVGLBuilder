@@ -1,5 +1,7 @@
 #pragma once
 #include "lvgl/lvgl.h"
+#include <stdexcept>
+#include <string>
 #include <utility>
 
 /**
@@ -43,7 +45,14 @@ public:
    * Implicitly converts to any object that is derived from Object
    */
   template <typename T> operator T &&() && {
-    return std::move(dynamic_cast<T&>(*this));
+    static_assert(
+      std::is_base_of<Object, T>::value, "cannot implicitly convert ‘Object’ to non-derived type");
+    try {
+      return std::move(dynamic_cast<T&>(*this));
+    } catch (const std::bad_cast& e) {
+      throw std::runtime_error(
+        "error: failed to implicitly convert 'Object' to '" + std::string(typeid(T).name()) + "'");
+    }
   }
 
   /*--------------------
