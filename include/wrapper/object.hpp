@@ -320,6 +320,71 @@ public:
   void animate(lv_anim_builtin_t type, uint16_t time, uint16_t delay, void (*cb)(lv_obj_t*));
 #endif
 
+  /*=======================
+   * Getter functions
+   *======================*/
+
+  /*------------------
+   * Screen get
+   *-----------------*/
+
+  /**
+   * Return with the active screen
+   *
+   * @return the active screen object (loaded by 'lv_scr_load()')
+   */
+  static Object ActiveScreen();
+
+  /**
+   * Return with the top layer. (Same on every screen and it is above the normal screen layer)
+   *
+   * @return the top layer object (transparent screen sized lv_obj)
+   */
+  static Object TopScreen();
+
+  /**
+   * Return with the system layer. (Same on every screen and it is above the all other layers) It is used for example by
+   * the cursor
+   *
+   * @return the system layer object (transparent screen sized lv_obj)
+   */
+  static Object SystemScreen();
+
+  /**
+   * Return with the screen of an object
+   *
+   * @return the screen
+   */
+  Object getScreen() const;
+
+  /*---------------------
+   * Parent/children get
+   *--------------------*/
+
+  /**
+   * Returns with the parent of an object
+   *
+   * @return the parent of 'obj'
+   */
+  Object getParent() const;
+
+  /**
+   * Iterate through the children of an object (start from the "youngest, lastly created")
+   *
+   * @param child NULL at first call to get the next children and the previous return value later
+   *
+   * @return the child after 'act_child' or NULL if no more child
+   */
+  Object getChild(const Object& child) const;
+
+  /**
+   * Iterate through the children of an object (start from the "oldest", firstly created)
+   * @param obj pointer to an object
+   * @param child NULL at first call to get the next children
+   *                  and the previous return value later
+   * @return the child after 'act_child' or NULL if no more child
+   */
+  Object getChildBack(const Object& child) const;
 protected:
   lv_obj_t* object = NULL;
 };
