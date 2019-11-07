@@ -4,6 +4,7 @@
 
 #include "wrapper/button.hpp"
 #include "wrapper/object.hpp"
+#include "wrapper/buttonmatrix.hpp"
 
 void ui_init() {
 
@@ -17,6 +18,8 @@ void ui_init() {
   lv_style_copy(&style_1, &lv_style_plain);
   style_1.body.main_color = LV_COLOR_RED;
   btn.setStyle(LV_BTN_STYLE_PR, &style_1);
+
+  ButtonMatrix btnm = ButtonMatrix::create();
   while (true) {
     usleep(1000000);
   }
