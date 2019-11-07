@@ -33,6 +33,17 @@ public:
   Object& operator=(Object&& iobject) = default;
 
   /**
+   * Gets the internal lvgl object pointer.
+   *
+   * @return The internal lvgl object pointer.
+   */
+  lv_obj_t* get() const;
+
+  /*--------------------
+   * Create and delete
+   *-------------------*/
+
+  /**
    * Create object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
    */
   static Object create();
