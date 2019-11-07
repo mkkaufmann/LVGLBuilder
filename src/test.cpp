@@ -5,6 +5,7 @@
 #include "wrapper/button.hpp"
 #include "wrapper/object.hpp"
 #include "wrapper/buttonmatrix.hpp"
+#include "wrapper/tileview.hpp"
 
 void ui_init() {
 
@@ -20,6 +21,7 @@ void ui_init() {
   btn.setStyle(LV_BTN_STYLE_PR, &style_1);
 
   ButtonMatrix btnm = ButtonMatrix::create();
+  TileView tileview = TileView::create();
   while (true) {
     usleep(1000000);
   }
