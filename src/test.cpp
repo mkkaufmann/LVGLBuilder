@@ -12,6 +12,8 @@ void ui_init() {
   Object obj2 = Object::create(obj1);
   obj2.setSize(20, 20).setPosition(0, 0);
 
+  Button btn = Button::create().setSize(200, 100).setPosition(0, 0);
+
   while (true) {
     usleep(1000000);
   }
