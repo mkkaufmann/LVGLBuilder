@@ -43,7 +43,7 @@ public:
    * Implicitly converts to any object that is derived from Object
    */
   template <typename T> operator T &&() && {
-    return std::move(*dynamic_cast<T*>(this));
+    return std::move(dynamic_cast<T&>(*this));
   }
 
   /*--------------------
