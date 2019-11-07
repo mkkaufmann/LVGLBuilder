@@ -3,6 +3,11 @@
 class Button : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the wrapper is supported
    */
   Button(Button&& ibutton) = default;
