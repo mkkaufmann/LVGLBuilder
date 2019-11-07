@@ -8,6 +8,11 @@
 class LED : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the LED is supported
    */
   LED(LED&& LED) = default;

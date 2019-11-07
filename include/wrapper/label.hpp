@@ -8,6 +8,11 @@
 class Label : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the Label is supported
    */
   Label(Label&& Label) = default;

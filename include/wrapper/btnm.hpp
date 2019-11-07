@@ -8,6 +8,11 @@
 class ButtonMatrix : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the ButtonMatrix is supported
    */
   ButtonMatrix(ButtonMatrix&& ButtonMatrix) = default;

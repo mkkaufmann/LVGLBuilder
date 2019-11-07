@@ -8,6 +8,11 @@
 class TileView : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the TileView is supported
    */
   TileView(TileView&& TileView) = default;

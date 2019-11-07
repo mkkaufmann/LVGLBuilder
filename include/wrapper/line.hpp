@@ -8,6 +8,11 @@
 class Line : public Object {
 public:
   /**
+   * Wraps an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Moving the Line is supported
    */
   Line(Line&& Line) = default;
