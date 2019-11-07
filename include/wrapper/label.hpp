@@ -1,22 +1,12 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates Label Object
- */
 class Label : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL label pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the Label is supported
-   */
-  Label(Label&& Label) = default;
-  Label& operator=(Label&& ilabel) = default;
 
   /**
    * Create Label with no parameters. Defaults parent to lv_scr_act() and copy to NULL

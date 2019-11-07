@@ -1,17 +1,12 @@
 #pragma once
 #include "object.hpp"
+
 class Button : public Object {
 public:
   /**
    * Wraps an LVGL button pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the wrapper is supported
-   */
-  Button(Button&& ibutton) = default;
-  Button& operator=(Button&& ibutton) = default;
 
   /**
    * Create object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
@@ -99,7 +94,5 @@ public:
    */
   Button& setStyle(lv_btn_style_t type, lv_style_t* style);
 
-  //GETTERS		
-
-  
+  //GETTERS
 };

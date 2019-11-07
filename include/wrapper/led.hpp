@@ -1,22 +1,12 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates LED Object
- */
 class LED : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL led pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the LED is supported
-   */
-  LED(LED&& LED) = default;
-  LED& operator=(LED&& iled) = default;
 
   /**
    * Create LED with no parameters. Defaults parent to lv_scr_act() and copy to NULL

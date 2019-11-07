@@ -1,22 +1,12 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates TileView Object
- */
 class TileView : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL tileveiw pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the TileView is supported
-   */
-  TileView(TileView&& TileView) = default;
-  TileView& operator=(TileView&& itileview) = default;
 
   /**
    * Create TileView with no parameters. Defaults parent to lv_scr_act() and copy to NULL

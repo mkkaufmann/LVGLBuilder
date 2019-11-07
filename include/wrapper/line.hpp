@@ -1,22 +1,12 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates Line Object
- */
 class Line : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL line pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the Line is supported
-   */
-  Line(Line&& Line) = default;
-  Line& operator=(Line&& iline) = default;
 
   /**
    * Create Line with no parameters. Defaults parent to lv_scr_act() and copy to NULL

@@ -1,22 +1,12 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates ButtonMatrix Object
- */
 class ButtonMatrix : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL btnm pointer
    */
   using Object::Object;
-
-  /**
-   * Moving the ButtonMatrix is supported
-   */
-  ButtonMatrix(ButtonMatrix&& ButtonMatrix) = default;
-  ButtonMatrix& operator=(ButtonMatrix&& ibuttonmatrix) = default;
 
   /**
    * Create ButtonMatrix with no parameters. Defaults parent to lv_scr_act() and copy to NULL
