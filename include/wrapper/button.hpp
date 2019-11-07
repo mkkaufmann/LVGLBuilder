@@ -1,7 +1,6 @@
-#ifndef BUTTON_HPP
-#define BUTTON_HPP
+#pragma once
 #include "object.hpp"
-class Button : public Object{
+class Button : public Object {
 public:
   /**
    * Moving the wrapper is supported
@@ -29,30 +28,27 @@ public:
    */
   static Button create(const Object& iparent, const Button& icopy);
 
-		
-		/* Enable the toggled states
+  /* Enable the toggled states
 		 * @param enabled if true, enable toggled states. If false, disable
 		 */
-		Button& setToggle(bool enabled);
+  Button& setToggle(bool enabled);
 
-		/* Set the state of the button
+  /* Set the state of the button
 		 * @param state new state of the button
 		 */
-		Button& setState(lv_btn_state_t state);
+  Button& setState(lv_btn_state_t state);
 
-		/* Toggle the state of the button*/
-		Button& toggle();
+  /* Toggle the state of the button*/
+  Button& toggle();
 
-		/* Set the layout of a button
+  /* Set the layout of a button
 		 * @param layout the new layout of the button
 		 */
-		Button& setLayout(lv_layout_t layout);
+  Button& setLayout(lv_layout_t layout);
 
-		/* Set the style of a button
+  /* Set the style of a button
 		 * @param type which style should be set
 		 * @param style style to be set
 		 */
-		//Button& setStyle(lv_btn_style_t type, lv_style_t style);
-
+  //Button& setStyle(lv_btn_style_t type, lv_style_t style);
 };
-#endif
