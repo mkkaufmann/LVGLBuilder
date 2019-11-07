@@ -52,6 +52,12 @@ public:
    */
   Button& toggle();
 
+		/**
+		 * Set a function to call when a button even happens
+		 * @param type the type of event
+		 * @param action the action to perform
+		 */
+		Button& setAction();
   /** 
    * Set the layout of a button
    *
