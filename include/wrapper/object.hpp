@@ -196,12 +196,129 @@ public:
   Object& setAutoRealign(bool enabled) &;
   Object&& setAutoRealign(bool enabled) &&;
 
+  /*---------------------
+   * Appearance set
+   *--------------------*/
+
   /**
-   * Gets the internal lvgl object pointer.
+   * Set a new style for an object
    *
-   * @return The internal lvgl object pointer.
+   * @param style the new style
    */
-  lv_obj_t* get() const;
+  void setStyle(lv_style_t* style);
+
+  /**
+   * Notify an object about its style is modified
+   */
+  void refreshStyle();
+
+  /*-----------------
+   * Attribute set
+   *----------------*/
+
+  /**
+   * Hide an object. It won't be visible and clickable.
+   *
+   * @param enabled true: hide the object
+   */
+  void setHidden(bool enabled);
+
+  /**
+   * Enable or disable the clicking of an object
+   *
+   * @param enabled true: make the object clickable
+   */
+  void setClick(bool enabled);
+
+  /**
+   * Enable to bring this object to the foreground if it or any of its children is clicked
+   *
+   * @param enabled true: enable the auto top feature
+   */
+  void setTop(bool enabled);
+
+  /**
+   * Enable the dragging of an object
+   *
+   * @param enabled true: make the object dragable
+   */
+  void setDrag(bool enabled);
+
+  /**
+   * Enable the throwing of an object after is is dragged
+   *
+   * @param enabled true: enable the drag throw
+   */
+  void setDragThrow(bool enabled);
+
+  /**
+   * Enable to use parent for drag related operations. If trying to drag the object the parent will be moved instead
+   *
+   * @param enabled true: enable the 'drag parent' for the object
+   */
+  void setDragParent(bool enabled);
+
+  /**
+   * Set the opa scale enable parameter (required to set opa_scale with `lv_obj_set_opa_scale()`)
+   *
+   * @param enabled true: opa scaling is enabled for this object and all children; false: no opa scaling
+   */
+  void setOpacityScaleEnable(bool enabled);
+
+  /**
+   * Set the opa scale of an object
+   *
+   * @param opa_scale a factor to scale down opacity [0..255]
+   */
+  void setOpacityScale(lv_opa_t opa_scale);
+
+  /**
+   * Set a bit or bits in the protect filed
+   *
+   * @param prot 'OR'-ed values from `lv_protect_t`
+   */
+  void setProtect(uint8_t prot);
+
+  /**
+   * Clear a bit or bits in the protect filed
+   *
+   * @param prot 'OR'-ed values from `lv_protect_t`
+   */
+  void clearProtect(uint8_t prot);
+
+  /*----------------
+   * Other set
+   *--------------*/
+
+#ifdef LV_OBJ_FREE_NUM_TYPE
+  /**
+   * Set an application specific number for an object. It can help to identify objects in the application.
+   *
+   * @param free_num the new free number
+   */
+  void setFreeNum(LV_OBJ_FREE_NUM_TYPE free_num);
+#endif
+
+#if LV_OBJ_FREE_PTR != 0
+  /**
+   * Set an application specific  pointer for an object. It can help to identify objects in the application.
+   *
+   * @param free_p the new free pinter
+   */
+  void setFreePtr(void* free_p);
+#endif
+
+#if USE_LV_ANIMATION
+  /**
+   * Animate an object
+   *
+   * @param type  type of animation from 'lv_anim_builtin_t'. 'OR' it with ANIM_IN or ANIM_OUT
+   * @param time  time of animation in milliseconds
+   * @param delay delay before the animation in milliseconds
+   * @param cb    a function to call when the animation is ready
+   */
+  void animate(lv_anim_builtin_t type, uint16_t time, uint16_t delay, void (*cb)(lv_obj_t*));
+#endif
 
 protected:
   lv_obj_t* object = NULL;
