@@ -364,7 +364,7 @@ public:
   /**
    * Returns with the parent of an object
    *
-   * @return the parent of 'obj'
+   * @return the parent of object
    */
   Object getParent() const;
 
@@ -379,12 +379,207 @@ public:
 
   /**
    * Iterate through the children of an object (start from the "oldest", firstly created)
-   * @param obj pointer to an object
-   * @param child NULL at first call to get the next children
-   *                  and the previous return value later
+   *
+   * @param child NULL at first call to get the next children and the previous return value later
+   *
    * @return the child after 'act_child' or NULL if no more child
    */
   Object getChildBack(const Object& child) const;
+
+  /**
+   * Count the children of an object (only children directly on object)
+   *
+   * @return children number of object
+   */
+  uint16_t countChildren() const;
+
+  /*---------------------
+   * Coordinate get
+   *--------------------*/
+
+  /**
+   * Copy the coordinates of an object to an area
+   *
+   * @return The position.
+   */
+  lv_area_t getPosition() const;
+
+  /**
+   * Get the x coordinate of object
+   *
+   * @return distance of object from the left side of its parent
+   */
+  lv_coord_t getX() const;
+
+  /**
+   * Get the y coordinate of object
+   *
+   * @return distance of object from the top of its parent
+   */
+  lv_coord_t getY() const;
+
+  /**
+   * Get the width of an object
+   *
+   * @return the width
+   */
+  lv_coord_t getWidth() const;
+
+  /**
+   * Get the height of an object
+   *
+   * @return the height
+   */
+  lv_coord_t getHeight() const;
+
+  /**
+   * Get the extended size attribute of an object
+   *
+   * @return the extended size attribute
+   */
+  lv_coord_t getExtSize() const;
+
+  /**
+   * Get the automatic realign property of the object.
+   *
+   * @return true: auto realign is enabled; false: auto realign is disabled
+   */
+  bool getAutoRealign();
+
+  /*-----------------
+   * Appearance get
+   *---------------*/
+
+  /**
+   * Get the style pointer of an object (if NULL get style of the parent)
+   *
+   * @return pointer to a style
+   */
+  lv_style_t* getStyle() const;
+
+  /*-----------------
+   * Attribute get
+   *----------------*/
+
+  /**
+   * Get the hidden attribute of an object
+   *
+   * @return true: the object is hidden
+   */
+  bool getHidden() const;
+
+  /**
+   * Get the click enable attribute of an object
+   *
+   * @return true: the object is clickable
+   */
+  bool getClick() const;
+
+  /**
+   * Get the top enable attribute of an object
+   *
+   * @return true: the auto top feature is enabled
+   */
+  bool getTop() const;
+
+  /**
+   * Get the drag enable attribute of an object
+   *
+   * @return true: the object is dragable
+   */
+  bool getDrag() const;
+
+  /**
+   * Get the drag throw enable attribute of an object
+   *
+   * @return true: drag throw is enabled
+   */
+  bool getDragThrow() const;
+
+  /**
+   * Get the drag parent attribute of an object
+   *
+   * @return true: drag parent is enabled
+   */
+  bool getDragParent() const;
+
+  /**
+   * Get the opa scale enable parameter
+   *
+   * @return true: opa scaling is enabled for this object and all children; false: no opa scaling
+   */
+  lv_opa_t getOpacityScaleEnable() const;
+
+  /**
+   * Get the opa scale parameter of an object
+   *
+   * @return opa scale [0..255]
+   */
+  lv_opa_t getOpacityScale() const;
+
+  /**
+   * Get the protect field of an object
+   *
+   * @return protect field ('OR'ed values of `lv_protect_t`)
+   */
+  uint8_t getProtect() const;
+
+  /**
+   * Check at least one bit of a given protect bitfield is set
+   *
+   * @param prot protect bits to test ('OR'ed values of `lv_protect_t`)
+   *
+   * @return false: none of the given bits are set, true: at least one bit is set
+   */
+  bool isProtected(uint8_t prot) const;
+
+  /*------------------
+   * Other get
+   *-----------------*/
+
+  /**
+   * Get object's and its ancestors type. Put their name in `type_buf` starting with the current type. E.g.
+   * buf.type[0]="lv_btn", buf.type[1]="lv_cont", buf.type[2]="lv_obj"
+   *
+   * @return the type.
+   */
+  lv_obj_type_t getType() const;
+
+#ifdef LV_OBJ_FREE_NUM_TYPE
+  /**
+   * Get the free number
+   *
+   * @return the free number
+   */
+  LV_OBJ_FREE_NUM_TYPE getFreeNum() const;
+#endif
+
+#if LV_OBJ_FREE_PTR != 0
+  /**
+   * Get the free pointer
+   *
+   * @return the free pointer
+   */
+  void* getFreePtr() const;
+#endif
+
+#if USE_LV_GROUP
+  /**
+   * Get the group of the object
+   *
+   * @return the pointer to group of the object
+   */
+  void* getGroup() const;
+
+  /**
+   * Tell whether the object is the focused object of a group or not.
+   *
+   * @return true: the object is focused, false: the object is not focused or not in a group
+   */
+  bool isFocused() const;
+
+#endif
+
 protected:
   lv_obj_t* object = NULL;
 };
