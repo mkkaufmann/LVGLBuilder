@@ -1,22 +1,19 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates Line Object
- */
 class Line : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL line pointer
    */
   using Object::Object;
 
   /**
-   * Moving the Line is supported
+   * Returns the name of the object, used for logging
    */
-  Line(Line&& Line) = default;
-  Line& operator=(Line&& iline) = default;
+  static constexpr const char* getName() {
+    return "Line";
+  }
 
   /**
    * Create Line with no parameters. Defaults parent to lv_scr_act() and copy to NULL

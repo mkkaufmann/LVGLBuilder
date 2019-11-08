@@ -1,22 +1,19 @@
 #pragma once
+#include "object.hpp"
 
-#include "wrapper/object.hpp"
-
-/**
- * Creates ButtonMatrix Object
- */
 class ButtonMatrix : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
+   * Wraps an LVGL btnm pointer
    */
   using Object::Object;
 
   /**
-   * Moving the ButtonMatrix is supported
+   * Returns the name of the object, used for logging
    */
-  ButtonMatrix(ButtonMatrix&& ButtonMatrix) = default;
-  ButtonMatrix& operator=(ButtonMatrix&& ibuttonmatrix) = default;
+  static constexpr const char* getName() {
+    return "ButtonMatrix";
+  }
 
   /**
    * Create ButtonMatrix with no parameters. Defaults parent to lv_scr_act() and copy to NULL
