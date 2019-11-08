@@ -226,7 +226,8 @@ public:
    *
    * @param style the new style
    */
-  void setStyle(lv_style_t* style);
+  Object& setStyle(lv_style_t* style) &;
+  Object&& setStyle(lv_style_t* style) &&;
 
   /**
    * Notify an object about its style is modified

@@ -14,7 +14,16 @@ void ui_init() {
   const int screenHeight = 240;
   const int screenWidth = 480;
   
-  Object container = Object::create().setPosition(0, 0).setSize(screenWidth,screenHeight);
+  static lv_style_t container_style;
+  lv_style_copy(&container_style, &lv_style_plain);
+  container_style.body.main_color = LV_COLOR_RED;
+  container_style.body.grad_color = LV_COLOR_RED;
+
+  Object container = Object::create()
+		  .setPosition(0, 0)
+		  .setSize(screenWidth,screenHeight)
+		  .setStyle(&container_style);
+  
   
   Object field = Object::create(container).setPosition(0, 0).setSize(screenWidth, screenWidth);
 
