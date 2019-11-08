@@ -34,4 +34,13 @@ public:
    * @param icopy   the Line for this Line to copy
    */
   static Line create(const Object& iparent, const Line& icopy);
+
+  /**
+   * Set an array of points for the line to connect
+   * @param points an array of points (cannot be a local variable that is destroyed)
+   * @param numPoints number of points in points
+   */
+  Line& setPoints(const lv_point_t* points, uint16_t numPoints) &;
+  Line&& setPoints(const lv_point_t* points, uint16_t numPoints) &&;
+
 };
