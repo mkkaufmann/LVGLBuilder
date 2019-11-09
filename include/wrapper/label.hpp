@@ -34,4 +34,27 @@ public:
    * @param icopy   the Label for this Label to copy
    */
   static Label create(const Object& iparent, const Label& icopy);
+
+  /**
+   * Set a new text for a label (saved by label)
+   * @param text '\0' terminated character string
+   */
+  Label& setText(const char * text) &;
+  Label&& setText(const char * text) &&;
+
+  /**
+   * Set a new text for a label from a character array (saved by label)
+   * @param array array of characters
+   * @param size the size of 'array' in bytes
+   */
+  Label& setArrayText(const char * array, uint16_t size) &;
+  Label&& setArrayText(const char * array, uint16_t size) &&;
+
+  /**
+   * Set a static text (not saved by the label)
+   * @param test pointer to a text
+   */
+  Label& setStaticText(const char * text) &;
+  Label&& setStaticText(const char * text) &&;
+		
 };
