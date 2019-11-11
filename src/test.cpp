@@ -8,12 +8,12 @@
 #include "wrapper/tileview.hpp"
 #include "wrapper/label.hpp"
 
-static lv_res_t click_action()
+static lv_res_t click_action(lv_obj_t * obj)
 {
+//  lv_obj_t * iobj = obj;
   printf("Clicked!\n");
-  return LV_RES_OK; /*Return OK because the button matrix is not deleted*/
+  return LV_RES_OK;
 }
-
 
 void ui_init() {
   
@@ -79,7 +79,8 @@ void ui_init() {
 
   lv_style_t * main_btn_style = &main_style;
 
-  Button button = Button::create()
+  Button button = Button::create();
+  button
     .setAction(LV_BTN_ACTION_CLICK, click_action)
     .setLayout( LV_LAYOUT_OFF )
     .setFit( 100, 100 )
