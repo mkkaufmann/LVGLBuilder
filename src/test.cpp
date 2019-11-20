@@ -61,6 +61,9 @@ void ui_init() {
 	t.setPosition(0, 80);
 
   while (true) {
-    usleep(1000000);
+    for(double i = 0; i < 9000000000; i++){
+      printf("I = %f\n", i);
+    }
+    printf("done\n");
   }
 }
