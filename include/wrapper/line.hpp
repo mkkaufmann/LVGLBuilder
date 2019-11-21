@@ -42,5 +42,4 @@ public:
    */
   Line& setPoints(const lv_point_t* points, uint16_t numPoints) &;
   Line&& setPoints(const lv_point_t* points, uint16_t numPoints) &&;
-
 };

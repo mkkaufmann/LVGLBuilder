@@ -148,12 +148,12 @@ Object&& Object::setAutoRealign(bool enabled) && {
 };
 
 Object& Object::setStyle(lv_style_t* style) & {
-		lv_obj_set_style(object, style);
-		return *this;
+  lv_obj_set_style(object, style);
+  return *this;
 }
 
 Object&& Object::setStyle(lv_style_t* style) && {
-		return std::move(setStyle(style));
+  return std::move(setStyle(style));
 }
 
 lv_obj_t* Object::get() const {

@@ -5,11 +5,11 @@
 #include <string>
 
 #include "wrapper/button.hpp"
-#include "wrapper/object.hpp"
 #include "wrapper/buttonmatrix.hpp"
-#include "wrapper/tileview.hpp"
 #include "wrapper/label.hpp"
 #include "wrapper/line.hpp"
+#include "wrapper/object.hpp"
+#include "wrapper/tileview.hpp"
 
 const int screenWidth = 480;
 const int screenHeight = 240;
