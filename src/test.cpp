@@ -10,11 +10,11 @@
 #include "wrapper/tileview.hpp"
 #include "wrapper/label.hpp"
 #include "wrapper/line.hpp"
+#include "layout.hpp"
 
-const int screenWidth = 480;
-const int screenHeight = 240;
+
 void ui_init() {
-  Object container = Object::create();
+				Layout();
   while (true) {
     usleep(1000000);
   }
