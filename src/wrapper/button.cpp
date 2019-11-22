@@ -27,9 +27,9 @@ Button& Button::toggle() {
   return *this;
 }
 
-Button& Button::setAction(lv_btn_action_t type, lv_action_t action){
-		lv_btn_set_action(object, type, action);
-		return *this;
+Button& Button::setAction(lv_btn_action_t type, lv_action_t action) {
+  lv_btn_set_action(object, type, action);
+  return *this;
 }
 
 Button& Button::setLayout(lv_layout_t layout) {
@@ -37,29 +37,27 @@ Button& Button::setLayout(lv_layout_t layout) {
   return *this;
 }
 
-Button& Button::setFit(bool horizontal_enable, bool vertical_enable){
-		lv_btn_set_fit(object, horizontal_enable, vertical_enable);
-		return *this;
+Button& Button::setFit(bool horizontal_enable, bool vertical_enable) {
+  lv_btn_set_fit(object, horizontal_enable, vertical_enable);
+  return *this;
 }
 
-Button& Button::setInkInTime(uint16_t time){
-		lv_btn_set_ink_in_time(object, time);
-		return *this;
+Button& Button::setInkInTime(uint16_t time) {
+  lv_btn_set_ink_in_time(object, time);
+  return *this;
 }
 
-Button& Button::setInkWaitTime(uint16_t time){
-		lv_btn_set_ink_wait_time(object, time);
-		return *this;
+Button& Button::setInkWaitTime(uint16_t time) {
+  lv_btn_set_ink_wait_time(object, time);
+  return *this;
 }
 
-Button& Button::setInkOutTime(uint16_t time){
-		lv_btn_set_ink_out_time(object, time);
-		return *this;
+Button& Button::setInkOutTime(uint16_t time) {
+  lv_btn_set_ink_out_time(object, time);
+  return *this;
 }
 
-Button& Button::setStyle(lv_btn_style_t type, lv_style_t* style){
-		lv_btn_set_style(object, type, style);		
-		return *this;
+Button& Button::setStyle(lv_btn_style_t type, lv_style_t* style) {
+  lv_btn_set_style(object, type, style);
+  return *this;
 }
-
-

@@ -35,4 +35,3 @@ public:
    */
   static TextArea create(const Object& iparent, const TextArea& icopy);
 };
-

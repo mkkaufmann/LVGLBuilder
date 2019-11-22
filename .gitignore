@@ -1,4 +1,4 @@
 *.sublime*
-.ccls-cache
+*-cache
 bin/
 src/test.cpp
