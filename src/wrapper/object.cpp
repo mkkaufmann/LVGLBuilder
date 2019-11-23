@@ -14,6 +14,14 @@ Object Object::create(const Object& iparent, const Object& icopy) {
   return Object(lv_obj_create(iparent.get(), icopy.get()));
 }
 
+lv_obj_t* Object::get() const {
+  return object;
+}
+
+Object::operator lv_obj_t*() const {
+  return object;
+}
+
 void Object::remove() {
   lv_obj_del(object);
 }
@@ -92,8 +100,4 @@ Object& Object::setAutoRealign(bool enabled) {
 Object& Object::setStyle(lv_style_t* style) {
   lv_obj_set_style(object, style);
   return *this;
-}
-
-lv_obj_t* Object::get() const {
-  return object;
 }

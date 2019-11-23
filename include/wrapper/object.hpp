@@ -30,9 +30,10 @@ public:
   }
 
   /**
-   * Returns the internal lvgl object pointer.
+   * Returns the internal lvgl object pointer. An Object can be treated as a lvgl pointer.
    */
   lv_obj_t* get() const;
+  operator lv_obj_t*() const;
 
   /*--------------------
    * Create and delete
