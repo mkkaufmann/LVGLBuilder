@@ -203,6 +203,19 @@ public:
   operator lv_obj_t*() const;
 
   /**
+   * Implicitly converts to any object that is derived from Object
+   */
+  template <typename T, typename std::enable_if<std::is_base_of<Object, T>::value>::type = 0>
+  operator T() {
+    try {
+      return dynamic_cast<T&>(*this);
+    } catch (const std::bad_cast& e) {
+      throw std::runtime_error(
+        "error: failed to implicitly convert ‘Object’ to ‘" + std::string(T::getName()) + "’");
+    }
+  }
+
+  /**
    * Return the name of the object, used for logging
    */
   static constexpr const char* getName() {
