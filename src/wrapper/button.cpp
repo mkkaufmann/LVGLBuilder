@@ -13,7 +13,7 @@ Button Button::create(const Object& iparent, const Button& icopy) {
   return Button(lv_btn_create(iparent.get(), icopy.get()));
 }
 
-void Button::setText(const char * txt, const lv_obj_t * copy){
+void Button::setText(const char* txt, const lv_obj_t* copy) {
   label = lv_label_create(object, copy);
   lv_label_set_text(label, txt);
 }

@@ -40,7 +40,7 @@ public:
    *
    * @param char new text of the button
    */
-  void setText(const char * txt, const lv_obj_t * copy = NULL);
+  void setText(const char* txt, const lv_obj_t* copy = NULL);
 
   /**
    * Enable the toggled states
@@ -111,5 +111,5 @@ public:
   //GETTERS
 
 protected:
-  lv_obj_t * label = NULL;
+  lv_obj_t* label = NULL;
 };
