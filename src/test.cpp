@@ -1,9 +1,9 @@
 
 #include "lvgl/lvgl.h"
+#include <iostream>
 #include <stdlib.h>
-#include <unistd.h>
-
 #include <string>
+#include <unistd.h>
 
 #include "layout.hpp"
 #include "wrapper/button.hpp"
@@ -14,33 +14,30 @@
 #include "wrapper/page.hpp"
 #include "wrapper/tileview.hpp"
 
-const int screenWidth = 480;
-const int screenHeight = 240;
-
 void test() {
   Object container = Object::create();
-  container.setSize(screenWidth, screenHeight);
+  container.setSize(LV_HOR_RES, LV_VER_RES);
 
   ButtonMatrix btnm = ButtonMatrix::create(container);
-  btnm.setSize(screenWidth, screenHeight / 4);
+  btnm.setSize(LV_HOR_RES, LV_VER_RES / 4);
 
   Label label = Label::create(container);
-  label.setSize(screenWidth / 4, screenHeight * .75);
-  label.setPosition(0, screenHeight / 4);
+  label.setSize(LV_HOR_RES / 4, LV_VER_RES * .75);
+  label.setPosition(0, LV_VER_RES / 4);
   label.setStaticText("    l\n    a\n    b\n    e\n    l\n\n  here  ");
 
-  lv_point_t points[] = {{screenWidth / 8, screenHeight / 4}, {screenWidth / 8, screenHeight}};
+  lv_point_t points[] = {{LV_HOR_RES / 8, LV_VER_RES / 4}, {LV_HOR_RES / 8, LV_VER_RES}};
   Line line = Line::create(container);
   line.setPoints(points, 2);
 
   Button button = Button::create(container);
-  button.setSize(screenWidth / 4, screenHeight * .75);
-  button.setPosition(screenWidth / 8, screenHeight / 4);
+  button.setSize(LV_HOR_RES / 4, LV_VER_RES * .75);
+  button.setPosition(LV_HOR_RES / 8, LV_VER_RES / 4);
   button.setText("Button");
 
   TileView tileView = TileView::create(container);
-  tileView.setSize(screenWidth * .625, screenHeight * .75);
-  tileView.setPosition(screenWidth * .375, screenHeight / 4);
+  tileView.setSize(LV_HOR_RES * .625, LV_VER_RES * .75);
+  tileView.setPosition(LV_HOR_RES * .375, LV_VER_RES / 4);
 }
 
 void ui_init() {
