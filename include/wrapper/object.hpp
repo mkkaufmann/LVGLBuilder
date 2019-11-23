@@ -10,19 +10,6 @@
 class Object {
 public:
   /**
-   * Wrap an LVGL object pointer
-   *
-   * @param iobject The object pointer
-   */
-  Object(lv_obj_t* iobject);
-
-  /**
-   * Destroy the Object wrapper but the lvgl object is left untouched
-   * Use remove() to delete the lvgl object
-   */
-  virtual ~Object() = default;
-
-  /**
    * Create an object. Defaults parent to lv_scr_act() and copy to NULL
    */
   static Object create();
@@ -63,6 +50,19 @@ public:
    * @return the system layer object (transparent screen sized lv_obj)
    */
   static Object SystemScreen();
+
+  /**
+   * Wrap an LVGL object pointer
+   *
+   * @param iobject The object pointer
+   */
+  Object(lv_obj_t* iobject);
+
+  /**
+   * Destroy the Object wrapper but the lvgl object is left untouched
+   * Use remove() to delete the lvgl object
+   */
+  virtual ~Object() = default;
 
   /**
    * Delete this Object and all of its children
