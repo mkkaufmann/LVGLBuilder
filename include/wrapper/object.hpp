@@ -205,7 +205,7 @@ public:
   /**
    * Implicitly converts to any object that is derived from Object
    */
-  template <typename T, typename std::enable_if<std::is_base_of<Object, T>::value>::type = 0>
+  template <typename T, typename std::enable_if<std::is_base_of<Object, T>::value>::type* = nullptr>
   operator T() {
     try {
       return dynamic_cast<T&>(*this);
