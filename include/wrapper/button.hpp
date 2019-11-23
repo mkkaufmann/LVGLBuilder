@@ -4,6 +4,11 @@
 class Button : public Object {
 public:
   /**
+   * Wrap an LVGL button pointer
+   */
+  using Object::Object;
+
+  /**
    * Create a button. Defaults parent to lv_scr_act() and copy to NULL
    */
   static Button create();
@@ -22,11 +27,6 @@ public:
    * @param icopy   the object for this object to be a copy of
    */
   static Button create(const Object& iparent, const Button& icopy);
-
-  /**
-   * Wrap an LVGL button pointer
-   */
-  using Object::Object;
 
   /**
    * Set the label of the button

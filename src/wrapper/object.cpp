@@ -1,5 +1,7 @@
 #include "wrapper/object.hpp"
 
+Object::Object(lv_obj_t* iobject) : object(iobject) {}
+
 Object Object::create() {
   return Object(lv_obj_create(ActiveScreen(), NULL));
 }
@@ -23,8 +25,6 @@ Object Object::TopScreen() {
 Object Object::SystemScreen() {
   return lv_layer_sys();
 }
-
-Object::Object(lv_obj_t* iobject) : object(iobject) {}
 
 void Object::remove() {
   lv_obj_del(object);
