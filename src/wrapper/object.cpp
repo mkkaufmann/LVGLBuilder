@@ -3,23 +3,27 @@
 Object::Object(lv_obj_t* iobject) : object(iobject) {}
 
 Object Object::create() {
-  return Object(lv_obj_create(lv_scr_act(), NULL));
+  return Object(lv_obj_create(ActiveScreen(), NULL));
 }
 
 Object Object::create(const Object& iparent) {
-  return Object(lv_obj_create(iparent.get(), NULL));
+  return Object(lv_obj_create(iparent, NULL));
 }
 
 Object Object::create(const Object& iparent, const Object& icopy) {
-  return Object(lv_obj_create(iparent.get(), icopy.get()));
+  return Object(lv_obj_create(iparent, icopy));
 }
 
-lv_obj_t* Object::get() const {
-  return object;
+Object Object::ActiveScreen() {
+  return lv_scr_act();
 }
 
-Object::operator lv_obj_t*() const {
-  return object;
+Object Object::TopScreen() {
+  return lv_layer_top();
+}
+
+Object Object::SystemScreen() {
+  return lv_layer_sys();
 }
 
 void Object::remove() {
@@ -33,11 +37,6 @@ Object& Object::clean() {
 
 Object& Object::invalidate() {
   lv_obj_invalidate(object);
-  return *this;
-}
-
-Object& Object::setParent(const Object& iparent) {
-  lv_obj_set_parent(object, iparent.get());
   return *this;
 }
 
@@ -72,32 +71,19 @@ Object& Object::setHeight(lv_coord_t height) {
 }
 
 Object& Object::align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) {
-  lv_obj_align(object, base.get(), alignment, xShift, yShift);
+  lv_obj_align(object, base, alignment, xShift, yShift);
   return *this;
 }
-
-Object& Object::alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) {
-  lv_obj_align(object, lv_obj_get_parent(object), alignment, xShift, yShift);
-  return *this;
-}
-
-Object&
-  Object::alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) {
-  lv_obj_align_origo(object, base.get(), alignment, xShift, yShift);
-  return *this;
-}
-
-Object& Object::realign() {
-  lv_obj_realign(object);
-  return *this;
-}
-
-Object& Object::setAutoRealign(bool enabled) {
-  lv_obj_set_auto_realign(object, enabled);
-  return *this;
-};
 
 Object& Object::setStyle(lv_style_t* style) {
   lv_obj_set_style(object, style);
   return *this;
+}
+
+lv_obj_t* Object::get() const {
+  return object;
+}
+
+Object::operator lv_obj_t*() const {
+  return object;
 }
