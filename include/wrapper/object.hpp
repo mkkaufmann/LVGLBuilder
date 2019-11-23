@@ -10,6 +10,11 @@
 class Object {
 public:
   /**
+   * Wrap an empty LVGL object pointer
+   */
+  Object() = default;
+
+  /**
    * Wrap an LVGL object pointer
    *
    * @param iobject The object pointer
