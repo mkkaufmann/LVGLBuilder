@@ -36,6 +36,13 @@ public:
   static Button create(const Object& iparent, const Button& icopy);
 
   /**
+   * Set the label of the button
+   *
+   * @param char new text of the button
+   */
+  void setText(const char * txt, const lv_obj_t * copy = NULL);
+
+  /**
    * Enable the toggled states
    *
    * @param enabled if true, enable toggled states. If false, disable
@@ -102,4 +109,7 @@ public:
   Button& setStyle(lv_btn_style_t type, lv_style_t* style);
 
   //GETTERS
+
+protected:
+  lv_obj_t * label = NULL;
 };

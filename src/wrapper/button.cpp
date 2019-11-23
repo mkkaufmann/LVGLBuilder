@@ -1,4 +1,5 @@
 #include "wrapper/button.hpp"
+#include "wrapper/label.hpp"
 
 Button Button::create() {
   return Button(lv_btn_create(lv_scr_act(), NULL));
@@ -10,6 +11,11 @@ Button Button::create(const Object& iparent) {
 
 Button Button::create(const Object& iparent, const Button& icopy) {
   return Button(lv_btn_create(iparent.get(), icopy.get()));
+}
+
+void Button::setText(const char * txt, const lv_obj_t * copy){
+  label = lv_label_create(object, copy);
+  lv_label_set_text(label, txt);
 }
 
 Button& Button::setToggle(bool enabled) {
