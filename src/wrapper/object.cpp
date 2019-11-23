@@ -75,9 +75,38 @@ Object& Object::align(const Object& base, lv_align_t alignment, lv_coord_t xShif
   return *this;
 }
 
-Object& Object::setStyle(lv_style_t* style) {
-  lv_obj_set_style(object, style);
-  return *this;
+Object Object::getScreen() const {
+  return lv_obj_get_screen(object);
+}
+
+Object Object::getParent() const {
+  return lv_obj_get_parent(object);
+}
+
+lv_area_t Object::getPosition() const {
+  lv_area_t pos;
+  lv_obj_get_coords(object, &pos);
+  return pos;
+}
+
+lv_coord_t Object::getX() const {
+  return lv_obj_get_x(object);
+}
+
+lv_coord_t Object::getY() const {
+  return lv_obj_get_y(object);
+}
+
+lv_coord_t Object::getWidth() const {
+  return lv_obj_get_width(object);
+}
+
+lv_coord_t Object::getHeight() const {
+  return lv_obj_get_height(object);
+}
+
+lv_style_t* Object::getStyle() const {
+  return lv_obj_get_style(object);
 }
 
 lv_obj_t* Object::get() const {

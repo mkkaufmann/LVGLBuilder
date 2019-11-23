@@ -43,21 +43,21 @@ public:
   static Object create(const Object& iparent, const Object& icopy);
 
   /**
-   * Return the active screen object
+   * Get the active screen object
    *
    * @return the active screen object (loaded by 'lv_scr_load()')
    */
   static Object ActiveScreen();
 
   /**
-   * Return the top layer object. (Same on every screen and it is above the normal screen layer)
+   * Get the top layer object. (Same on every screen and it is above the normal screen layer)
    *
    * @return the top layer object (transparent screen sized lv_obj)
    */
   static Object TopScreen();
 
   /**
-   * Return the system layer object. (Same on every screen and it is above the all other layers) It
+   * Get the system layer object. (Same on every screen and it is above the all other layers) It
    * is used for example by the cursor
    *
    * @return the system layer object (transparent screen sized lv_obj)
