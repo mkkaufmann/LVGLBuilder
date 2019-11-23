@@ -23,36 +23,10 @@ public:
   virtual ~Object() = default;
 
   /**
-   * Copying the wrapper makes no sense, to copy the object use copy()
-   */
-  Object(const Object& iobject) = delete;
-  Object& operator=(const Object& iobject) = delete;
-
-  /**
-   * Moving the wrapper is supported
-   */
-  Object(Object&& iobject) = default;
-  Object& operator=(Object&& iobject) = default;
-
-  /**
    * Returns the name of the object, used for logging
    */
   static constexpr const char* getName() {
     return "Object";
-  }
-
-  /**
-   * Implicitly converts to any object that is derived from Object
-   */
-  template <typename T> operator T &&() && {
-    static_assert(
-      std::is_base_of<Object, T>::value, "cannot implicitly convert ‘Object’ to non-derived type");
-    try {
-      return std::move(dynamic_cast<T&>(*this));
-    } catch (const std::bad_cast& e) {
-      throw std::runtime_error(
-        "error: failed to implicitly convert ‘Object’ to ‘" + std::string(T::getName()) + "’");
-    }
   }
 
   /**
@@ -92,14 +66,12 @@ public:
   /** 
    * Delete all of this Object's children
    */
-  Object& clean() &;
-  Object&& clean() &&;
+  Object& clean();
 
   /** 
    * Mark the object as invalid (see LVGL docs)
    */
-  Object& invalidate() &;
-  Object&& invalidate() &&;
+  Object& invalidate();
 
   /*=====================
    * Setter functions
@@ -114,8 +86,7 @@ public:
    *
    * @param iparent the parent for this object to become a child of
    */
-  Object& setParent(const Object& iparent) &;
-  Object&& setParent(const Object& iparent) &&;
+  Object& setParent(const Object& iparent);
 
   /*--------------------
    * Coordinate set
@@ -127,24 +98,21 @@ public:
    * @param x the new x position of the object
    * @param y the new y position of the object
    */
-  Object& setPosition(lv_coord_t x, lv_coord_t y) &;
-  Object&& setPosition(lv_coord_t x, lv_coord_t y) &&;
+  Object& setPosition(lv_coord_t x, lv_coord_t y);
 
   /** 
    * Set the x position of the object
    *
    * @param x the new x coordinate (measured from left side of the parent)
    */
-  Object& setX(lv_coord_t x) &;
-  Object&& setX(lv_coord_t x) &&;
+  Object& setX(lv_coord_t x);
 
   /** 
    * Set the y position of the object
    *
    * @param y the new y coordinate (measured from top of the parent)
    */
-  Object& setY(lv_coord_t y) &;
-  Object&& setY(lv_coord_t y) &&;
+  Object& setY(lv_coord_t y);
 
   /** 
    * Set the size of the object
@@ -152,24 +120,21 @@ public:
    * @param width  the new width of the object
    * @param height the new height of the object
    */
-  Object& setSize(lv_coord_t width, lv_coord_t height) &;
-  Object&& setSize(lv_coord_t width, lv_coord_t height) &&;
+  Object& setSize(lv_coord_t width, lv_coord_t height);
 
   /** 
    * Set the width of the object
    *
    * @param width the new width of the object
    */
-  Object& setWidth(lv_coord_t width) &;
-  Object&& setWidth(lv_coord_t width) &&;
+  Object& setWidth(lv_coord_t width);
 
   /** 
    * Set the height of the object
    *
    * @param height the new height of the object
    */
-  Object& setHeight(lv_coord_t height) &;
-  Object&& setHeight(lv_coord_t height) &&;
+  Object& setHeight(lv_coord_t height);
 
   /**
    * Align the object to another object
@@ -179,8 +144,7 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
-  Object&& align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
+  Object& align(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift);
 
   /** 
    * Align the object to its parent
@@ -189,8 +153,7 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
-  Object&& alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
+  Object& alignToParent(lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift);
 
   /** 
    * Align the object to another object
@@ -200,22 +163,19 @@ public:
    * @param xShift    the x-coordinate shift after alignment
    * @param yShift    the y-coordinate shift after alignment
    */
-  Object& alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &;
-  Object&& alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift) &&;
+  Object& alignOrigo(const Object& base, lv_align_t alignment, lv_coord_t xShift, lv_coord_t yShift);
 
   /** 
    * Realign the object based on the last alignment
    */
-  Object& realign() &;
-  Object&& realign() &&;
+  Object& realign();
 
   /** 
    * Enable automatic realignment on resize
    *
    * @param enabled whether or not realignment is enabled
    */
-  Object& setAutoRealign(bool enabled) &;
-  Object&& setAutoRealign(bool enabled) &&;
+  Object& setAutoRealign(bool enabled);
 
   /*---------------------
    * Appearance set
@@ -226,8 +186,7 @@ public:
    *
    * @param style the new style
    */
-  Object& setStyle(lv_style_t* style) &;
-  Object&& setStyle(lv_style_t* style) &&;
+  Object& setStyle(lv_style_t* style);
 
   /**
    * Notify an object about its style is modified

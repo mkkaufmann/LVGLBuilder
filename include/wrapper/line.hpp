@@ -40,6 +40,5 @@ public:
    * @param points an array of points (cannot be a local variable that is destroyed)
    * @param numPoints number of points in points
    */
-  Line& setPoints(const lv_point_t* points, uint16_t numPoints) &;
-  Line&& setPoints(const lv_point_t* points, uint16_t numPoints) &&;
+  Line& setPoints(const lv_point_t* points, uint16_t numPoints);
 };
