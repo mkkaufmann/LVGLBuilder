@@ -4,36 +4,29 @@
 class Button : public Object {
 public:
   /**
-   * Wraps an LVGL button pointer
-   */
-  using Object::Object;
-
-  /**
-   * Returns the name of the object, used for logging
-   */
-  static constexpr const char* getName() {
-    return "Button";
-  }
-
-  /**
-   * Create object with no parameters. Defaults parent to lv_scr_act() and copy to NULL
+   * Create a button. Defaults parent to lv_scr_act() and copy to NULL
    */
   static Button create();
 
-  /** 
-   * Create object with parent parameter and defaults copy to NULL
+  /**
+   * Create a button with the parent parameter. Defaults copy to NULL
    *
    * @param iparent the parent object for this object to be a child of
    */
   static Button create(const Object& iparent);
 
   /** 
-   * Create object with both parent and copy parameters
+   * Create a button with both the parent and copy parameters
    *
    * @param iparent the parent object for this object to be a child of
-   * @param icopy   the object for this object to copy
+   * @param icopy   the object for this object to be a copy of
    */
   static Button create(const Object& iparent, const Button& icopy);
+
+  /**
+   * Wrap an LVGL button pointer
+   */
+  using Object::Object;
 
   /**
    * Set the label of the button
@@ -63,7 +56,8 @@ public:
 
   /**
    * Set a function to call when a button event happens
-   * @param type the type of event
+   *
+   * @param type   the type of event
    * @param action the action to perform
    */
   Button& setAction(lv_btn_action_t type, lv_action_t action);
@@ -77,28 +71,11 @@ public:
 
   /**
    * Enable the horizontal or vertical fit of a button
+   *
    * @param horizontal_enable enable horizontal fit if true
-   * @param vertical_enable enable vertical fit if true
+   * @param vertical_enable   enable vertical fit if true
    */
   Button& setFit(bool horizontal_enable, bool vertical_enable);
-
-  /**
-   * Set time of the ink in effect
-   * @param time the time of the ink animation
-   */
-  Button& setInkInTime(uint16_t time);
-
-  /**
-   * Set the wait time before the ink disappears
-   * @param time the time of the ink animation
-   */
-  Button& setInkWaitTime(uint16_t time);
-
-  /**
-   * Set time of the ink out effect
-   * @param time the time of the ink animation
-   */
-  Button& setInkOutTime(uint16_t time);
 
   /**
    * Set the style of a button
@@ -108,7 +85,63 @@ public:
    */
   Button& setStyle(lv_btn_style_t type, lv_style_t* style);
 
-  //GETTERS
+  /**
+   * Get the current state of the button
+   *
+   * @return the state of the button (from lv_btn_state_t enum)
+   */
+  lv_btn_state_t getState();
+
+  /**
+   * Get the toggle enable attribute of the button
+   *
+   * @return ture: toggle enabled, false: disabled
+   */
+  bool getToggle();
+
+  /**
+   * Get the release action of a button
+   *
+   * @param  type the action type
+   * @return pointer to the release action function
+   */
+  lv_action_t getAction(lv_btn_action_t type);
+
+  /**
+   * Get the layout of a button
+   *
+   * @return the layout from 'lv_cont_layout_t'
+   */
+  lv_layout_t getLayout();
+
+  /**
+   * Get horizontal fit enable attribute of a button
+   *
+   * @return true: horizontal fit is enabled; false: disabled
+   */
+  bool getHorFit();
+
+  /**
+   * Get vertical fit enable attribute of a container
+   *
+   * @return true: vertical fit is enabled; false: disabled
+   */
+  bool getVerFit();
+
+  /**
+   * Get style of a button.
+   *
+   * @param  type which style should be get
+   * @return style pointer to the style
+   */
+  lv_style_t* getStyle(lv_btn_style_t type);
+
+  /**
+   * Return the name of the object, used for logging
+   */
+  static constexpr const char* getName() {
+    return "Button";
+  }
 
 protected:
   lv_obj_t* label = NULL;

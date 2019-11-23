@@ -210,5 +210,5 @@ public:
   }
 
 protected:
-  lv_obj_t* object {NULL};
+  lv_obj_t* object = NULL;
 };
