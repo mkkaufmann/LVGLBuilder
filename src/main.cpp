@@ -1,7 +1,3 @@
-
-/*********************
- *      INCLUDES
- *********************/
 #define _DEFAULT_SOURCE /* needed for usleep() */
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,9 +8,6 @@
 #include "lv_drivers/indev/mousewheel.h"
 #include "lvgl/lvgl.h"
 #include <SDL2/SDL.h>
-/*********************
- *      DEFINES
- *********************/
 
 /*On OSX SDL needs different handling*/
 #if defined(__APPLE__) && defined(TARGET_OS_MAC)
@@ -23,39 +16,29 @@
   #endif
 #endif
 
-/**********************
- *  STATIC PROTOTYPES
- **********************/
 static void hal_init(void);
 static int tick_thread(void* data);
 static int lvgl_thread(void* data);
-
 void ui_init();
 
-/**********************
- *   GLOBAL FUNCTIONS
- **********************/
+// run this function before initializing globals
+__attribute__((constructor(101))) static void display_init() {
+  /*Initialize LittlevGL*/
+  lv_init();
+  /*Initialize the HAL (display, input devices, tick) for LittlevGL*/
+  hal_init();
+  // set the global theme
+  lv_theme_set_current(lv_theme_alien_init(40, NULL));
+}
 
 int main(int argc, char** argv) {
   (void)argc; /*Unused*/
   (void)argv; /*Unused*/
 
-  /*Initialize LittlevGL*/
-  lv_init();
-
-  /*Initialize the HAL (display, input devices, tick) for LittlevGL*/
-  hal_init();
-
-  lv_theme_set_current(lv_theme_alien_init(40, NULL));
-
   ui_init();
 
   return 0;
 }
-
-/**********************
- *   STATIC FUNCTIONS
- **********************/
 
 /**
  * Initialize the Hardware Abstraction Layer (HAL) for the Littlev graphics library
