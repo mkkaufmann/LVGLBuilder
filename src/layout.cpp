@@ -39,8 +39,7 @@ Layout::Layout(){
 								.setStyle(LV_BTNM_STYLE_BTN_REL, autonReleased)
 								.setStyle(LV_BTNM_STYLE_BTN_INA, autonReleased);
 }
- 
- 
+
 lv_res_t Layout::colorSelectorAction(lv_obj_t* btnm, const char * txt){
 								lv_style_t* style = lv_btnm_get_style(btnm, LV_BTNM_STYLE_BTN_PR);
 				if(strcmp(txt, "Red") == 0){

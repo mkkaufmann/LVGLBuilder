@@ -6,17 +6,18 @@
 #include <string>
 
 #include "wrapper/button.hpp"
-#include "wrapper/object.hpp"
 #include "wrapper/buttonmatrix.hpp"
-#include "wrapper/tileview.hpp"
 #include "wrapper/label.hpp"
 #include "wrapper/line.hpp"
+#include "wrapper/object.hpp"
+#include "wrapper/page.hpp"
+#include "wrapper/tileview.hpp"
 #include "layout.hpp"
 
 const int screenWidth = 480;
 const int screenHeight = 240;
 
-void ui_init() {
+void test(){
   Object container = Object::create();
   container.setSize( screenWidth, screenHeight );
 
@@ -38,9 +39,13 @@ void ui_init() {
   button.setText("Button");
 
   TileView tileView = TileView::create(container);
-  tileView.setSize(screenWidth * (5/8), screenHeight * .75);
-  tileView.setPosition(screenWidth * (3/8), screenHeight/4);
+  tileView.setSize(screenWidth * .625, screenHeight * .75);
+  tileView.setPosition(screenWidth * .375, screenHeight/4);
+}
 
+void ui_init() {
+  test();
+//  Layout layout();
   while (true) {
     usleep(1000000);
   }
